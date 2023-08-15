@@ -31,7 +31,7 @@
 - Environment variables (using [Nest config](https://docs.nestjs.com/techniques/configuration#configuration))
 - Validation pipes (Using [Nest Validation](https://docs.nestjs.com/techniques/validation))
 - Prisma ORM and nest-js prisma library
-- Authentication (Using hashing with salting)
+- [Authentication](https://docs.nestjs.com/security/authentication) (Using [hashing](https://docs.nestjs.com/security/encryption-and-hashing#hashing) with salting)
 - [Authorization](https://docs.nestjs.com/security/authorization#authorization) (RBAC Implementation)
 - Swagger documentation (Using [Swagger Plugin](https://docs.nestjs.com/openapi/cli-plugin#cli-plugin))
 - [Versioning](https://docs.nestjs.com/techniques/versioning#usage) and [Global Prefix](https://docs.nestjs.com/faq/global-prefix)
