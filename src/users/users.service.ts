@@ -13,7 +13,7 @@ export class UsersService {
     const hashedPassword = await bcrypt.hash(createUserDto.password, salt);
     createUserDto.password = hashedPassword;
 
-    return this.usersRepository.createUser(createUserDto);
+    return await this.usersRepository.createUser(createUserDto);
   }
 
   findAll() {

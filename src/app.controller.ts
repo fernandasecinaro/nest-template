@@ -22,7 +22,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Version('2')
+  @Version('2') // api/v2/path
   @Get()
   getHelloV2(): string {
     return this.appService.getHello() + ' v2';
