@@ -30,6 +30,7 @@
 - Environment variables (using [Nest config](https://docs.nestjs.com/techniques/configuration#configuration))
 - Validation pipes (Using [Nest Validation](https://docs.nestjs.com/techniques/validation))
 - Prisma ORM and nest-js prisma library
+- Authentication (Using hashing with salting)
 - Swagger documentation
 - [Versioning](https://docs.nestjs.com/techniques/versioning#usage) and [Global Prefix](https://docs.nestjs.com/faq/global-prefix)
 - Users entity example (src/users: including module, controller, service, entity and DTOs)

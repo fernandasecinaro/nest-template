@@ -7,12 +7,19 @@ import {
   Param,
   Delete,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller({
   path: 'users',
@@ -24,20 +31,16 @@ export class UsersController {
 
   @Post()
   @ApiCreatedResponse({ type: UserEntity }) // This is the response type for Swagger documentation
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    return await this.usersService.create(createUserDto);
   }
 
   @Get()
+  @UseGuards(AuthGuard) // The user must be authenticated to access this endpoint
+  @ApiBearerAuth() // This is to add the "Authorize" button on Swagger
   @ApiOkResponse({ type: UserEntity, isArray: true })
   findAll() {
     return this.usersService.findAll();
-  }
-
-  @Get(':id')
-  @ApiOkResponse({ type: UserEntity })
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.findOne(id);
   }
 
   @Patch(':id')

@@ -11,6 +11,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { logger } from './middlewares/logger.middleware';
 import { UsersController } from './users/users.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { UsersController } from './users/users.controller';
       },
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
