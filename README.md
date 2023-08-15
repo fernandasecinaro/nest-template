@@ -31,7 +31,7 @@
 - Validation pipes (Using [Nest Validation](https://docs.nestjs.com/techniques/validation))
 - Prisma ORM and nest-js prisma library
 - Authentication (Using hashing with salting)
-- Swagger documentation
+- Swagger documentation using [Swagger Plugin](https://docs.nestjs.com/openapi/cli-plugin#cli-plugin)
 - [Versioning](https://docs.nestjs.com/techniques/versioning#usage) and [Global Prefix](https://docs.nestjs.com/faq/global-prefix)
 - Users entity example (src/users: including module, controller, service, entity and DTOs)
 - Logger middleware (src/middlewares/logger.middleware.ts)
@@ -166,9 +166,3 @@ To open Swagger documentation go to http://localhost:{PORT}/api
 Add an @ApiTags decorator to each Controller class, to group all the articles endpoints together in Swagger
 
 Look this [link](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0#group-endpoints-together-in-swagger) to know more
-
-### Update Swagger response types
-
-In the entity file add the decorator @ApiProperty() and in the controller add the @ApiCreatedResponse decorator
-
-Look this [link](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0#update-swagger-response-types) to know more

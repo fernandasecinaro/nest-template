@@ -13,8 +13,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  @ApiOkResponse({ type: AuthEntity })
-  async login(@Body() createUserDto: LoginDto) {
+  async login(@Body() createUserDto: LoginDto): Promise<AuthEntity> {
     return await this.authService.signIn(createUserDto);
   }
 }
