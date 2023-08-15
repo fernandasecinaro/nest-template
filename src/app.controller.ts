@@ -11,6 +11,8 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { AppService } from './app.service';
+import { Roles } from './auth/roles.decorator';
+import { $Enums } from '@prisma/client';
 
 @Controller('path')
 export class AppController {
@@ -24,6 +26,7 @@ export class AppController {
 
   @Version('2') // api/v2/path
   @Get()
+  @Roles($Enums.Role.admin)
   getHelloV2(): string {
     return this.appService.getHello() + ' v2';
   }

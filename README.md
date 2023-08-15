@@ -31,6 +31,7 @@
 - Validation pipes (Using [Nest Validation](https://docs.nestjs.com/techniques/validation))
 - Prisma ORM and nest-js prisma library
 - Authentication (Using hashing with salting)
+- [Authorization](https://docs.nestjs.com/security/authorization#authorization) (RBAC Implementation)
 - Swagger documentation using [Swagger Plugin](https://docs.nestjs.com/openapi/cli-plugin#cli-plugin)
 - [Versioning](https://docs.nestjs.com/techniques/versioning#usage) and [Global Prefix](https://docs.nestjs.com/faq/global-prefix)
 - Users entity example (src/users: including module, controller, service, entity and DTOs)
