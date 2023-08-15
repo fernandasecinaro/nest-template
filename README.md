@@ -151,6 +151,8 @@ Once you have changed the Prisma model (inside prisma/schema.prisma), you can ge
 $ npx prisma migrate dev --name [name]
 ```
 
+The above command will apply all unapplied migrations to the development database and update Prisma Client
+
 #### Update Prisma Client
 
 Prisma Client JS is a type-safe database client auto-generated based on the data model.
