@@ -14,7 +14,7 @@
 - [Prisma](#prisma)
   - [Connection string](#connection-string)
   - [Development](#development)
-    - [Create migration](#create-migration)
+    - [Create and apply migration](#create-and-apply-migration)
     - [Update Prisma Client](#update-prisma-client)
   - [Production](#production)
     - [Steps to run migrations on production environment](#steps-to-run-migrations-on-production-environment)
@@ -143,7 +143,7 @@ See the [documentation](https://pris.ly/d/connection-strings) to find the proper
 
 ### Development
 
-#### Create migration
+#### Create and apply migration
 
 Once you have changed the Prisma model (inside prisma/schema.prisma), you can generate a migration file using the following command:
 
