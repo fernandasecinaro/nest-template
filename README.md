@@ -1,25 +1,26 @@
-# Nest Template
+# Table of Content
 
 - [Description](#description)
 - [Template added features](#template-added-features)
 - [Steps to run the app](#steps-to-run-the-app)
+  - [Environment Variables](#environment-variables)
   - [Installation](#installation)
   - [Run docker](#run-docker)
   - [Apply database migrations](#apply-database-migrations)
   - [Run the app](#run-the-app)
   - [Test](#test)
+- [Guide to do a new controller or endpoint](#guide-to-do-a-new-controller-or-endpoint)
 - [CRUD generator](#crud-generator)
 - [Prisma](#prisma)
+  - [Connection string](#connection-string)
   - [Development](#development)
     - [Create migration](#create-migration)
     - [Update Prisma Client](#update-prisma-client)
   - [Production](#production)
-  - [Prisma Studio](#prisma-studio)
     - [Steps to run migrations on production environment](#steps-to-run-migrations-on-production-environment)
+  - [Prisma Studio](#prisma-studio)
 - [Swagger](#swagger)
   - [Open documentation](#open-documentation)
-  - [Group endpoints](#group-endpoints)
-  - [Update Swagger response types](#update-swagger-response-types)
 
 ## Description
 
@@ -32,13 +33,17 @@
 - Prisma ORM and nest-js prisma library
 - Authentication (Using hashing with salting)
 - [Authorization](https://docs.nestjs.com/security/authorization#authorization) (RBAC Implementation)
-- Swagger documentation using [Swagger Plugin](https://docs.nestjs.com/openapi/cli-plugin#cli-plugin)
+- Swagger documentation (Using [Swagger Plugin](https://docs.nestjs.com/openapi/cli-plugin#cli-plugin))
 - [Versioning](https://docs.nestjs.com/techniques/versioning#usage) and [Global Prefix](https://docs.nestjs.com/faq/global-prefix)
 - Users entity example (src/users: including module, controller, service, entity and DTOs)
 - Logger middleware (src/middlewares/logger.middleware.ts)
 - Provided example of throwing built-in exception (src/app.controller.ts)
 
 ## Steps to run the app
+
+### Environment Variables
+
+Create and complete .env file with proper variable values
 
 ### Installation
 
@@ -84,6 +89,23 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## Guide to do a new controller or endpoint
+
+**On Controller**
+
+- If wished, add versioning on Controller decorator
+- Add @ApiTags decorator to controller (to group endpoints on Swagger)
+
+**On Endpoint**
+
+- If wished, add @Version decorator on endpoint
+- Add @HttpCode decorator to endpoint if response’s status code is different to 200 OK (for Swagger)
+- If needed, annotate a DTO or entity property with @ApiHideProperty to exclude it on Swagger
+- Add decorators of class-validator to DTOs’ properties, eg: @MinLength(8), to enforce validation rules for all incoming client payloads
+- Add response type to endpoint (so Swagger could infer the response type)
+- In case the endpoint needs authentication use @UseGuards(AuthGuard) and @ApiBearerAuth() for the endpoint
+- If authorization needed, use @Roles decorator to authorize access to an endpoint only to users with a determined role. Eg. @Roles($Enums.Role.admin)
+
 ## CRUD generator
 
 Following this link: [Nest CRUD generator](https://docs.nestjs.com/recipes/crud-generator)
@@ -117,6 +139,10 @@ Warning: Take into account that the CRUD generated does not have endpoint valida
 
 ## Prisma
 
+### Connection string
+
+See the [documentation](https://pris.ly/d/connection-strings) to find the proper connection string
+
 ### Development
 
 #### Create migration
@@ -144,10 +170,6 @@ If you are happy with your database changes you want to deploy those changes to 
 $ npx prisma migrate deploy
 ```
 
-### Prisma Studio
-
-Run `yarn prisma` to open Prisma Studio UI.
-
 #### Steps to run migrations on production environment
 
 - Connect to an EC2 instance of the Beanstalk application
@@ -156,14 +178,12 @@ Run `yarn prisma` to open Prisma Studio UI.
 - Run the command `sudo docker exec -it <ContainerId> /bin/sh` to connect to the container shell
 - Run `npx prisma migrate deploy`
 
+### Prisma Studio
+
+Run `yarn prisma` to open Prisma Studio UI.
+
 ## Swagger
 
 ### Open documentation
 
 To open Swagger documentation go to http://localhost:{PORT}/api
-
-### Group endpoints
-
-Add an @ApiTags decorator to each Controller class, to group all the articles endpoints together in Swagger
-
-Look this [link](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0#group-endpoints-together-in-swagger) to know more
