@@ -35,9 +35,7 @@
 - [Authorization](https://docs.nestjs.com/security/authorization#authorization) (RBAC Implementation)
 - Swagger documentation (Using [Swagger Plugin](https://docs.nestjs.com/openapi/cli-plugin#cli-plugin))
 - [Versioning](https://docs.nestjs.com/techniques/versioning#usage) and [Global Prefix](https://docs.nestjs.com/faq/global-prefix)
-- Users entity example (src/users: including module, controller, service, entity and DTOs)
 - Logger middleware (src/middlewares/logger.middleware.ts)
-- Provided example of throwing built-in exception (src/app.controller.ts)
 
 ## Steps to run the app
 
