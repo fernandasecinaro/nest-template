@@ -39,6 +39,10 @@
 
 ## Steps to run the app
 
+### Requirements
+
+Make sure to have Nest CLI installed globally on your computer
+
 ### Environment Variables
 
 Create and complete .env file with proper variable values
