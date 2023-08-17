@@ -3,6 +3,7 @@
 - [Description](#description)
 - [Template added features](#template-added-features)
 - [Steps to run the app](#steps-to-run-the-app)
+  - [Requirements](#requirements)
   - [Environment Variables](#environment-variables)
   - [Installation](#installation)
   - [Run docker](#run-docker)
