@@ -103,7 +103,7 @@ $ yarn run test:cov
 
 - If wished, add @Version decorator on endpoint
 - Add @HttpCode decorator to endpoint if response’s status code is different to 200 OK (for Swagger)
-- If needed, annotate a DTO or entity property with @ApiHideProperty to exclude it on Swagger
+- If needed, annotate a DTO or entity property with @ApiHideProperty to exclude it on Swagger. NOTE: Your filenames must have one of the following suffixes: ['.dto.ts', '.entity.ts'] (e.g., create-user.dto.ts) in order to be analysed by the plugin.
 - Add decorators of class-validator to DTOs’ properties, eg: @MinLength(8), to enforce validation rules for all incoming client payloads
 - Add response type to endpoint (so Swagger could infer the response type)
 - In case the endpoint needs authentication use @UseGuards(AuthGuard) and @ApiBearerAuth() for the endpoint
